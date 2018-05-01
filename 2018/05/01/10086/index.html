@@ -9,14 +9,14 @@
   <title>10086 | qwer的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="哈哈哈 safari回调函数中调用window.open被浏览器拦截  safari偏好设置 - 高级- 不勾选阻止弹出式窗口    利用a标签的href，模拟点击a标签跳转12345678910111213141516171819202122//创建a标签var ahtml = &amp;apos;&amp;lt;a id=&amp;quot;xiaoyun_a&amp;quot; target=&amp;quot;_blank&amp;qu">
-<meta name="keywords" content="这是啥">
+<meta name="keywords" content="tag">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10086">
 <meta property="og:url" content="https://github.com/quan92/2018/05/01/10086/index.html">
 <meta property="og:site_name" content="qwer的博客">
 <meta property="og:description" content="哈哈哈 safari回调函数中调用window.open被浏览器拦截  safari偏好设置 - 高级- 不勾选阻止弹出式窗口    利用a标签的href，模拟点击a标签跳转12345678910111213141516171819202122//创建a标签var ahtml = &amp;apos;&amp;lt;a id=&amp;quot;xiaoyun_a&amp;quot; target=&amp;quot;_blank&amp;qu">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-05-01T03:27:07.394Z">
+<meta property="og:updated_time" content="2018-05-01T09:03:44.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10086">
 <meta name="twitter:description" content="哈哈哈 safari回调函数中调用window.open被浏览器拦截  safari偏好设置 - 高级- 不勾选阻止弹出式窗口    利用a标签的href，模拟点击a标签跳转12345678910111213141516171819202122//创建a标签var ahtml = &amp;apos;&amp;lt;a id=&amp;quot;xiaoyun_a&amp;quot; target=&amp;quot;_blank&amp;qu">
@@ -60,8 +60,6 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/tags">相册</a></li>
-	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -70,8 +68,6 @@
     			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
     			
             
-    			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
     			
             
     			
@@ -114,8 +110,6 @@
 			
 				
 			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -134,9 +128,7 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
-		        
-					<li style="width: 50%"><a href="/tags">相册</a></li>
+					<li style="width: 100%"><a href="/">主页</a></li>
 		        
 				</ul>
 			</nav>
@@ -196,13 +188,24 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">这是啥</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">tag</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/test//" class="article-tag-list-link color5">test</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -361,7 +364,7 @@ gitment.render('gitment-ctn')
 		toc_hide_index: true,
 		root: "/",
 		innerArchive: true,
-		showTags: true
+		showTags: false
 	}
 </script>
 
@@ -381,8 +384,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -394,15 +395,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -424,6 +423,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">这是啥</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tag</a>
               </li>
             
             <div class="clearfix"></div>
@@ -469,18 +472,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     	</section>
     
 
-    
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接(test)</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
     
 
     
