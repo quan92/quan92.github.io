@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>qwer的博客</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://github.com/quan92/"/>
+  <updated>2018-05-01T03:27:07.394Z</updated>
+  <id>https://github.com/quan92/</id>
+  
+  <author>
+    <name>quan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>10086</title>
+    <link href="https://github.com/quan92/2018/05/01/10086/"/>
+    <id>https://github.com/quan92/2018/05/01/10086/</id>
+    <published>2018-05-01T03:19:23.000Z</published>
+    <updated>2018-05-01T03:27:07.394Z</updated>
+    
+    <content type="html"><![CDATA[<p>哈哈哈</p><h3 id="safari回调函数中调用window-open被浏览器拦截"><a href="#safari回调函数中调用window-open被浏览器拦截" class="headerlink" title="safari回调函数中调用window.open被浏览器拦截"></a>safari回调函数中调用window.open被浏览器拦截</h3><ul><li><ol><li>safari偏好设置 - 高级- 不勾选阻止弹出式窗口</li></ol></li><li><ol start="2"><li>利用a标签的href，模拟点击a标签跳转<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//创建a标签</span><br><span class="line">var ahtml = &apos;&lt;a id=&quot;xiaoyun_a&quot; target=&quot;_blank&quot; style = &quot;display:none&quot;&gt;&lt;span id=&quot;xiaoyun_p&quot;&gt;xiaoyun_p&lt;/span&gt;&lt;/a&gt;&apos;;</span><br><span class="line">$(&quot;body&quot;).append(ahtml);</span><br><span class="line"></span><br><span class="line">//window.open(url, &quot;_blank&quot;);</span><br><span class="line">$(&quot;#xiaoyun_a&quot;).attr(&apos;href&apos;,url);</span><br><span class="line">//safari a标签没有click事件，需要手动创建事件触发</span><br><span class="line">function dispatch(dom)&#123;</span><br><span class="line">if(dom.click)&#123;</span><br><span class="line">dom.click();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">try&#123;</span><br><span class="line">var evt = document.createEvent(&apos;Event&apos;);  </span><br><span class="line">evt.initEvent(&quot;click&quot;,true,true);</span><br><span class="line">dom.dispatchEvent(evt);</span><br><span class="line"> &#125;catch(e)&#123;</span><br><span class="line">alert(e);</span><br><span class="line"> &#125;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">var div1= document.getElementById(&apos;xiaoyun_p&apos;);</span><br><span class="line">dispatch(div1);</span><br></pre></td></tr></table></figure></li></ol></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;哈哈哈&lt;/p&gt;
+&lt;h3 id=&quot;safari回调函数中调用window-open被浏览器拦截&quot;&gt;&lt;a href=&quot;#safari回调函数中调用window-open被浏览器拦截&quot; class=&quot;headerlink&quot; title=&quot;safari回调函数中调用window.o
+      
+    
+    </summary>
+    
+    
+      <category term="这是啥" scheme="https://github.com/quan92/tags/%E8%BF%99%E6%98%AF%E5%95%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://github.com/quan92/2018/05/01/hello-world/"/>
+    <id>https://github.com/quan92/2018/05/01/hello-world/</id>
+    <published>2018-05-01T02:24:45.187Z</published>
+    <updated>2018-05-01T02:24:45.187Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
