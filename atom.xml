@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/quan92/"/>
-  <updated>2018-05-01T09:03:44.075Z</updated>
+  <updated>2018-05-01T10:50:13.927Z</updated>
   <id>https://github.com/quan92/</id>
   
   <author>
@@ -17,28 +17,27 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>10086</title>
-    <link href="https://github.com/quan92/2018/05/01/10086/"/>
-    <id>https://github.com/quan92/2018/05/01/10086/</id>
+    <title>safari回调函数中调用window.open被浏览器拦截</title>
+    <link href="https://github.com/quan92/2018/05/01/20180501-%20safari%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%AD%E8%B0%83%E7%94%A8window.open%E8%A2%AB%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8B%A6%E6%88%AA/"/>
+    <id>https://github.com/quan92/2018/05/01/20180501- safari回调函数中调用window.open被浏览器拦截/</id>
     <published>2018-05-01T03:19:23.000Z</published>
-    <updated>2018-05-01T09:03:44.075Z</updated>
+    <updated>2018-05-01T10:50:13.927Z</updated>
     
-    <content type="html"><![CDATA[<p>哈哈哈</p><h3 id="safari回调函数中调用window-open被浏览器拦截"><a href="#safari回调函数中调用window-open被浏览器拦截" class="headerlink" title="safari回调函数中调用window.open被浏览器拦截"></a>safari回调函数中调用window.open被浏览器拦截</h3><ul><li><ol><li>safari偏好设置 - 高级- 不勾选阻止弹出式窗口</li></ol></li><li><ol start="2"><li>利用a标签的href，模拟点击a标签跳转<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//创建a标签</span><br><span class="line">var ahtml = &apos;&lt;a id=&quot;xiaoyun_a&quot; target=&quot;_blank&quot; style = &quot;display:none&quot;&gt;&lt;span id=&quot;xiaoyun_p&quot;&gt;xiaoyun_p&lt;/span&gt;&lt;/a&gt;&apos;;</span><br><span class="line">$(&quot;body&quot;).append(ahtml);</span><br><span class="line"></span><br><span class="line">//window.open(url, &quot;_blank&quot;);</span><br><span class="line">$(&quot;#xiaoyun_a&quot;).attr(&apos;href&apos;,url);</span><br><span class="line">//safari a标签没有click事件，需要手动创建事件触发</span><br><span class="line">function dispatch(dom)&#123;</span><br><span class="line">if(dom.click)&#123;</span><br><span class="line">dom.click();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">try&#123;</span><br><span class="line">var evt = document.createEvent(&apos;Event&apos;);  </span><br><span class="line">evt.initEvent(&quot;click&quot;,true,true);</span><br><span class="line">dom.dispatchEvent(evt);</span><br><span class="line"> &#125;catch(e)&#123;</span><br><span class="line">alert(e);</span><br><span class="line"> &#125;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">var div1= document.getElementById(&apos;xiaoyun_p&apos;);</span><br><span class="line">dispatch(div1);</span><br></pre></td></tr></table></figure></li></ol></li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="safari回调函数中调用window-open被浏览器拦截"><a href="#safari回调函数中调用window-open被浏览器拦截" class="headerlink" title="safari回调函数中调用window.open被浏览器拦截"></a>safari回调函数中调用window.open被浏览器拦截</h3><ul><li><ol><li>safari偏好设置 - 高级- 不勾选阻止弹出式窗口</li></ol></li><li><ol start="2"><li>利用a标签的href，模拟点击a标签跳转<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">//创建a标签</span><br><span class="line">var ahtml = &apos;&lt;a id=&quot;xiaoyun_a&quot; target=&quot;_blank&quot; style = &quot;display:none&quot;&gt;&lt;span id=&quot;xiaoyun_p&quot;&gt;xiaoyun_p&lt;/span&gt;&lt;/a&gt;&apos;;</span><br><span class="line">$(&quot;body&quot;).append(ahtml);</span><br><span class="line"></span><br><span class="line">//window.open(url, &quot;_blank&quot;);</span><br><span class="line">$(&quot;#xiaoyun_a&quot;).attr(&apos;href&apos;,url);</span><br><span class="line">//safari a标签没有click事件，需要手动创建事件触发</span><br><span class="line">function dispatch(dom)&#123;</span><br><span class="line">if(dom.click)&#123;</span><br><span class="line">dom.click();</span><br><span class="line">&#125;else&#123;</span><br><span class="line">try&#123;</span><br><span class="line">var evt = document.createEvent(&apos;Event&apos;);  </span><br><span class="line">evt.initEvent(&quot;click&quot;,true,true);</span><br><span class="line">dom.dispatchEvent(evt);</span><br><span class="line"> &#125;catch(e)&#123;</span><br><span class="line">alert(e);</span><br><span class="line"> &#125;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">var div1= document.getElementById(&apos;xiaoyun_p&apos;);</span><br><span class="line">dispatch(div1);</span><br></pre></td></tr></table></figure></li></ol></li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;哈哈哈&lt;/p&gt;
-&lt;h3 id=&quot;safari回调函数中调用window-open被浏览器拦截&quot;&gt;&lt;a href=&quot;#safari回调函数中调用window-open被浏览器拦截&quot; class=&quot;headerlink&quot; title=&quot;safari回调函数中调用window.o
+        &lt;h3 id=&quot;safari回调函数中调用window-open被浏览器拦截&quot;&gt;&lt;a href=&quot;#safari回调函数中调用window-open被浏览器拦截&quot; class=&quot;headerlink&quot; title=&quot;safari回调函数中调用window.open被浏览器拦截&quot;&gt;
       
     
     </summary>
     
-      <category term="test" scheme="https://github.com/quan92/categories/test/"/>
+      <category term="201805" scheme="https://github.com/quan92/categories/201805/"/>
     
     
-      <category term="tag" scheme="https://github.com/quan92/tags/tag/"/>
+      <category term="js" scheme="https://github.com/quan92/tags/js/"/>
     
   </entry>
   
