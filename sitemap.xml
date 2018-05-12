@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://github.com/quan92/2018/05/12/%E5%8A%A8%E6%80%81%E6%89%A9%E5%B1%95%E5%B9%B3%E5%8F%B0dep%E6%89%A9%E5%B1%95%E8%84%9A%E6%9C%AC%E7%9A%84%E5%AE%9E%E7%8E%B0/</loc>
+    
+    <lastmod>2018-05-12T03:40:39.304Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://github.com/quan92/2018/05/01/20180501-%20safari%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E4%B8%AD%E8%B0%83%E7%94%A8window.open%E8%A2%AB%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8B%A6%E6%88%AA/</loc>
     
     <lastmod>2018-05-01T10:50:13.927Z</lastmod>
@@ -16,14 +23,14 @@
   </url>
   
   <url>
-    <loc>https://github.com/quan92/photos/index.html</loc>
+    <loc>https://github.com/quan92/photos/data.json</loc>
     
     <lastmod>2018-05-01T02:11:20.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://github.com/quan92/photos/data.json</loc>
+    <loc>https://github.com/quan92/photos/index.html</loc>
     
     <lastmod>2018-05-01T02:11:20.000Z</lastmod>
     
