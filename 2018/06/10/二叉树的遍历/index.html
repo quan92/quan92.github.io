@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://github.com/quan92">
-  <title>Category: 201805 | qwer的博客</title>
+  <title>二叉树的遍历 | qwer的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="queit boy">
-<meta name="keywords" content="程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="qwer的博客">
-<meta property="og:url" content="https://github.com/quan92/categories/201805/index.html">
+  <meta name="description" content="二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式二叉树的遍历方式： 1、深度优先：递归，非递归实现方式 　　1)先序遍历：先访问根节点，再依次访问左子树和右子树 　　2)中序遍历：先访问左子树，再访问根节点吗，最后访问右子树 　　3)后序遍历：先访问左子树，再访问右子树，最后访问根节点 2、广度优先 按照树的深度，一层一层的访问树的节点 12345678910111213141516171">
+<meta name="keywords" content="算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二叉树的遍历">
+<meta property="og:url" content="https://github.com/quan92/2018/06/10/二叉树的遍历/index.html">
 <meta property="og:site_name" content="qwer的博客">
-<meta property="og:description" content="queit boy">
+<meta property="og:description" content="二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式二叉树的遍历方式： 1、深度优先：递归，非递归实现方式 　　1)先序遍历：先访问根节点，再依次访问左子树和右子树 　　2)中序遍历：先访问左子树，再访问根节点吗，最后访问右子树 　　3)后序遍历：先访问左子树，再访问右子树，最后访问根节点 2、广度优先 按照树的深度，一层一层的访问树的节点 12345678910111213141516171">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-10T13:46:55.796Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="qwer的博客">
-<meta name="twitter:description" content="queit boy">
+<meta name="twitter:title" content="二叉树的遍历">
+<meta name="twitter:description" content="二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式二叉树的遍历方式： 1、深度优先：递归，非递归实现方式 　　1)先序遍历：先访问根节点，再依次访问左子树和右子树 　　2)中序遍历：先访问左子树，再访问根节点吗，最后访问右子树 　　3)后序遍历：先访问左子树，再访问右子树，最后访问根节点 2、广度优先 按照树的深度，一层一层的访问树的节点 12345678910111213141516171">
   
     <link rel="alternative" href="/atom.xml" title="qwer的博客" type="application/atom+xml">
   
@@ -142,120 +143,201 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-二叉树的遍历" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/12/动态扩展平台dep扩展脚本的实现/" class="archive-article-date">
-  	<time datetime="2018-05-12T03:19:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/12/动态扩展平台dep扩展脚本的实现/">动态扩展平台dep扩展脚本的实现</a>
+    <h1 class="article-title" itemprop="name">
+      二叉树的遍历
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2018/06/10/二叉树的遍历/" class="archive-article-date">
+  	<time datetime="2018-06-09T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式"><a href="#二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式" class="headerlink" title="二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式"></a>二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式</h4><p>二叉树的遍历方式：</p>
+<p>1、深度优先：递归，非递归实现方式</p>
+<p>　　1)先序遍历：先访问根节点，再依次访问左子树和右子树</p>
+<p>　　2)中序遍历：先访问左子树，再访问根节点吗，最后访问右子树</p>
+<p>　　3)后序遍历：先访问左子树，再访问右子树，最后访问根节点</p>
+<p>2、广度优先</p>
+<p>按照树的深度，一层一层的访问树的节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br></pre></td><td class="code"><pre><span class="line">package com.dz.suanfa;</span><br><span class="line"></span><br><span class="line">import java.util.LinkedList;</span><br><span class="line">import java.util.Queue;</span><br><span class="line">import java.util.Stack;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author yuquan_wang</span><br><span class="line"> * @date 2018/6/10 20:24</span><br><span class="line"> **/</span><br><span class="line">public class BinaryTree &#123;</span><br><span class="line">    // 二叉树节点</span><br><span class="line">    static class BinaryTreeNode &#123;</span><br><span class="line">        int value;</span><br><span class="line">        BinaryTreeNode  left;</span><br><span class="line">        BinaryTreeNode  right;</span><br><span class="line"></span><br><span class="line">        public BinaryTreeNode (int value)&#123;</span><br><span class="line">            this.value=value;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        public BinaryTreeNode(int value, BinaryTreeNode left, BinaryTreeNode right) &#123;</span><br><span class="line">            super();</span><br><span class="line">            this.value = value;</span><br><span class="line">            this.left = left;</span><br><span class="line">            this.right = right;</span><br><span class="line">        &#125;</span><br><span class="line">        @Override</span><br><span class="line">        public String toString() &#123;</span><br><span class="line">            return &quot;value:&quot;+value == null?&quot;&quot;:String.valueOf(value) ;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    // 访问树的节点</span><br><span class="line">    public static void visit(BinaryTreeNode node) &#123;</span><br><span class="line">        System.out.print(node.value+ &quot; &quot; );</span><br><span class="line">    &#125;</span><br><span class="line">    /** 递归实现二叉树的先序遍历 */</span><br><span class="line">    public static void preOrder(BinaryTreeNode node)&#123;</span><br><span class="line">        if(node != null)&#123;</span><br><span class="line">            visit(node);</span><br><span class="line">            preOrder(node.left);</span><br><span class="line">            preOrder(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /** 递归实现二叉树的中序遍历 */</span><br><span class="line">    public static void inOrder(BinaryTreeNode node) &#123;</span><br><span class="line">        if(node != null)&#123;</span><br><span class="line">            inOrder(node.left);</span><br><span class="line">            visit(node);</span><br><span class="line">            inOrder(node.right);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /** 递归实现二叉树的中序遍历 */</span><br><span class="line">    public static void postOrder(BinaryTreeNode node) &#123;</span><br><span class="line">        if(node != null)&#123;</span><br><span class="line">            postOrder(node.left);</span><br><span class="line">            postOrder(node.right);</span><br><span class="line">            visit(node);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /** 非递归实现二叉树的先序遍历 */</span><br><span class="line">    public static void iterativePreorder(BinaryTreeNode node) &#123;</span><br><span class="line">        Stack&lt;BinaryTreeNode&gt; stack = new Stack&lt;BinaryTreeNode&gt;();</span><br><span class="line">        if(node != null)&#123;</span><br><span class="line">            stack.push(node);</span><br><span class="line">            while (!stack.empty()) &#123;</span><br><span class="line">                node = stack.pop();</span><br><span class="line">                // 先访问节点</span><br><span class="line">                visit(node);</span><br><span class="line">                if (node.right != null) &#123;</span><br><span class="line">                    stack.push(node.right);</span><br><span class="line">                &#125;</span><br><span class="line">                // 把左子结点压入栈</span><br><span class="line">                if (node.left != null) &#123;</span><br><span class="line">                    stack.push(node.left);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /** 非递归实现二叉树的中序遍历 */</span><br><span class="line">    public static void iterativeInOrder(BinaryTreeNode root) &#123;</span><br><span class="line">        Stack&lt;BinaryTreeNode&gt; stack = new Stack&lt;BinaryTreeNode&gt;();</span><br><span class="line">        BinaryTreeNode node = root;</span><br><span class="line">        while (node != null || stack.size() &gt; 0) &#123;</span><br><span class="line">            // 把当前节点的所有左侧子结点压入栈</span><br><span class="line">            while (node != null) &#123;</span><br><span class="line">                stack.push(node);</span><br><span class="line">                node = node.left;</span><br><span class="line">            &#125;</span><br><span class="line">            // 访问节点，处理该节点的右子树</span><br><span class="line">            if (stack.size() &gt; 0) &#123;</span><br><span class="line">                node = stack.pop();</span><br><span class="line">                visit(node);</span><br><span class="line">                node = node.right;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    /** 二叉树广度优先遍历——层序遍历 */</span><br><span class="line">    public static void layerTraversal(BinaryTreeNode root) &#123;</span><br><span class="line">        Queue&lt;BinaryTreeNode&gt; queue = new LinkedList&lt;BinaryTreeNode&gt;();</span><br><span class="line">        if (root != null) &#123;</span><br><span class="line">            queue.add(root);</span><br><span class="line">            while (!queue.isEmpty())&#123;</span><br><span class="line">                BinaryTreeNode currentNode = queue.poll();</span><br><span class="line">                visit(currentNode);</span><br><span class="line">                if (currentNode.left != null) &#123;</span><br><span class="line">                    queue.add(currentNode.left);</span><br><span class="line">                &#125;</span><br><span class="line">                if (currentNode.right != null) &#123;</span><br><span class="line">                    queue.add(currentNode.right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line"></span><br><span class="line">        // 构造二叉树</span><br><span class="line">        //    1</span><br><span class="line">        //   / \</span><br><span class="line">        //  2   3</span><br><span class="line">        // /   / \</span><br><span class="line">        //4   5   7</span><br><span class="line">        //     \  /</span><br><span class="line">        //     6  8</span><br><span class="line">        BinaryTreeNode root = new BinaryTreeNode(1);</span><br><span class="line">        BinaryTreeNode node2 = new BinaryTreeNode(2);</span><br><span class="line">        BinaryTreeNode node3 = new BinaryTreeNode(3);</span><br><span class="line">        BinaryTreeNode node4 = new BinaryTreeNode(4);</span><br><span class="line">        BinaryTreeNode node5 = new BinaryTreeNode(5);</span><br><span class="line">        BinaryTreeNode node6 = new BinaryTreeNode(6);</span><br><span class="line">        BinaryTreeNode node7 = new BinaryTreeNode(7);</span><br><span class="line">        BinaryTreeNode node8 = new BinaryTreeNode(8);</span><br><span class="line"></span><br><span class="line">        root.left = node2;</span><br><span class="line">        root.right = node3;</span><br><span class="line">        node2.left = node4;</span><br><span class="line">        node3.left = node5;</span><br><span class="line">        node3.right = node7;</span><br><span class="line">        node5.right = node6;</span><br><span class="line">        node7.left = node8;</span><br><span class="line">        System.out.println(&quot;二叉树先序遍历&quot;);</span><br><span class="line">        preOrder(root);</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.println(&quot;二叉树先序遍历非递归&quot;);</span><br><span class="line">        iterativePreorder(root);</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.println(&quot;二叉树中序遍历&quot;);</span><br><span class="line">        inOrder(root);</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.println(&quot;二叉树中序遍历非递归&quot;);</span><br><span class="line">        iterativeInOrder(root);</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.println(&quot;二叉树后序遍历&quot;);</span><br><span class="line">        postOrder(root);</span><br><span class="line">        System.out.println();</span><br><span class="line">//        System.out.println(&quot;二叉树单栈非递归后序遍历&quot;);</span><br><span class="line">//        iterativePostOrder(root);</span><br><span class="line">//        System.out.println(&quot;二叉树双栈非递归后序遍历&quot;);</span><br><span class="line">//        iterativePostOrderByTwoStacks(root);</span><br><span class="line">        System.out.println(&quot;二叉树层树序遍历&quot;);</span><br><span class="line">        layerTraversal(root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/201805//" class="article-tag-list-link color2">201805</a>
+        			<a href="/categories/201806//" class="article-tag-list-link color2">201806</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://github.com/quan92/2018/06/10/二叉树的遍历/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/01/20180501- safari回调函数中调用window.open被浏览器拦截/" class="archive-article-date">
-  	<time datetime="2018-05-01T03:19:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-01</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2018/06/10/八皇后/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          八皇后 （深度优先算法）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/12/动态扩展平台dep扩展脚本的实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">动态扩展平台dep扩展脚本的实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/01/20180501- safari回调函数中调用window.open被浏览器拦截/">safari回调函数中调用window.open被浏览器拦截</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/201805//" class="article-tag-list-link color2">201805</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式"><span class="toc-number">1.</span> <span class="toc-text">二叉树的广度优先遍历、深度优先遍历的递归和非递归实现方式</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
+  <div id="gitment-ctn"></div> 
+<link rel="stylesheet" href="//imsun.github.io/gitment/style/default.css">
+<script src="//imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  id: "https://github.com/quan92/2018/06/10/二叉树的遍历/",
+  owner: 'quan92',
+  repo: 'quan92.github.io',
+  oauth: {
+    client_id: '98ccfa982b3469f487a1',
+    client_secret: '5056b492ba7f9367a58b037efa28079f7c22d04c',
+  },
+})
+gitment.render('gitment-ctn')
+</script>
+  
 
 
           </div>
@@ -278,10 +360,10 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
-		isCategory: true,
+		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
 		root: "/",
