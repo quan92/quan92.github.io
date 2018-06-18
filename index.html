@@ -144,6 +144,177 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JVM进程执行过程中的异常诊断工具-Greys" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/18/JVM进程执行过程中的异常诊断工具-Greys/">JVM进程执行过程中的异常诊断工具-Greys</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/18/JVM进程执行过程中的异常诊断工具-Greys/" class="archive-article-date">
+  	<time datetime="2018-06-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><strong>github主页</strong>：<a href="https://github.com/oldmanpushcart/greys-anatomy/wiki">https://github.com/oldmanpushcart/greys-anatomy/wiki</a></p>
+<h4 id="简介："><a href="#简介：" class="headerlink" title="简介："></a>简介：</h4><p>Greys是一个JVM进程执行过程中的异常诊断工具，可以在不中断程序执行的情况下轻松完成问题排查工作。简单讲，不用改代码去打印debug日志，也不用重启服务器。  </p>
+<ul>
+<li>有时候突然一个问题反馈上来，需要入参才能完成定位，但恰恰没有任何日志。回去加上重新部署，一杯咖啡时间过去了，是不是很崩溃？ </li>
+<li>当你经过反复这样几次折腾之后变得聪明了，在自己的代码的所有入参和出参地方都加上debug日志，但这次问题似乎暴露在别人的代码中了…是不是很无奈？ </li>
+<li>突然遇到线上一个性能问题无法确定到底是哪个环节的耗时，只能反复抓jstack猜，还有没有办法可以好好的过日子啦？</li>
+</ul>
+<p>遇到以上问题时，你就是我们这类工具的目标客户，此类工具能利用Java6的Instrumentation特性，动态增强你所指定的类，获取你想要到的信息   </p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>在线安装（推荐）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sLk http://ompc.oss.aliyuncs.com/greys/install.sh|bash</span><br></pre></td></tr></table></figure></p>
+<p>本地安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://ompc.oss.aliyuncs.com/greys/release/greys-stable-bin.zip</span><br><span class="line"># 解压后</span><br><span class="line">cd greys</span><br><span class="line">sh ./install-local.sh</span><br></pre></td></tr></table></figure></p>
+<h4 id="启动Greys"><a href="#启动Greys" class="headerlink" title="启动Greys"></a>启动Greys</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./greys.sh &lt;PID&gt;[@IP:PORT]</span><br></pre></td></tr></table></figure>
+<h4 id="Greys命令详解"><a href="#Greys命令详解" class="headerlink" title="Greys命令详解"></a>Greys命令详解</h4><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>help</td>
+<td>查看命令的帮助文档，每个命令和参数都有很详细的说明</td>
+</tr>
+<tr>
+<td>sc</td>
+<td>查看JVM已加载的类信息</td>
+</tr>
+<tr>
+<td>sm</td>
+<td>查看已加载的方法信息</td>
+</tr>
+<tr>
+<td>monitor</td>
+<td>方法执行监控</td>
+</tr>
+<tr>
+<td>trace</td>
+<td>渲染方法内部调用路径，并输出方法路径上的每个节点上耗时</td>
+</tr>
+<tr>
+<td>ptrace</td>
+<td>强化版的trace命令。通过指定渲染路径，并可记录下路径中所有方法的入参、返值；与tt命令联动。</td>
+</tr>
+<tr>
+<td>watch</td>
+<td>方法执行数据观测</td>
+</tr>
+<tr>
+<td>tt</td>
+<td>方法执行数据的时空隧道，记录下指定方法每次调用的入参和返回信息，并能对这些不同的时间下调用进行观测</td>
+</tr>
+<tr>
+<td>stack</td>
+<td>输出当前方法被调用的调用路径</td>
+</tr>
+<tr>
+<td>js</td>
+<td>支持使用JavaScript脚本；支持CommonJS部分规范模块化（BMD规范）</td>
+</tr>
+<tr>
+<td>version</td>
+<td>输出当前目标Java进程所加载的Greys版本号</td>
+</tr>
+<tr>
+<td>quit</td>
+<td>退出greys客户端</td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>关闭greys服务端</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>重置增强类，将被greys增强过的类全部还原</td>
+</tr>
+<tr>
+<td>session</td>
+<td>查看当前会话</td>
+</tr>
+<tr>
+<td>jvm</td>
+<td>查看当前JVM的信息  </td>
+</tr>
+</tbody>
+</table>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>常看命令帮助<br>help<br>help watch  </p>
+<p><strong>具体使用详见：</strong><a href="https://github.com/oldmanpushcart/greys-anatomy/wiki/greys-pdf">https://github.com/oldmanpushcart/greys-anatomy/wiki/greys-pdf</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/201806//" class="article-tag-list-link color2">201806</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/18/JVM进程执行过程中的异常诊断工具-Greys/">more... >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java 并发工具包 java.util.concurrent" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -838,19 +1009,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">java.util.concurrent</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">tag</a>
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+                <a href="javascript:void(0)" class="js-tag color1">java.util.concurrent</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">tag</a>
               </li>
             
             <div class="clearfix"></div>
